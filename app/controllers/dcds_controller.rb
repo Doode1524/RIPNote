@@ -41,7 +41,7 @@ class DcdsController < ApplicationController
     end
   end 
 
-  def destroy 
+  def destroy
     @dcd.destroy
     flash[:notice] = "#{@dcd.first_name} was successfully removed."
     redirect_to dcds_path
