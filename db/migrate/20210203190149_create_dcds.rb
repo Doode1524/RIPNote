@@ -4,6 +4,7 @@ class CreateDcds < ActiveRecord::Migration[6.1]
       t.string :first_name
       t.string :last_name
       t.string :relationship
+      t.integer :user_id
       t.string :gender
       t.date :birthday
       t.date :deathday

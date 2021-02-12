@@ -15,12 +15,14 @@ class DcdsController < ApplicationController
     if @post 
       render :new_dcd_post
      else
+      redirect_if_not_dcd_user
        @dcd = Dcd.new 
      end
   end
 
   def create
     @dcd = Dcd.new(dcd_params)
+    
       if @dcd.save
         redirect_to dcds_path #singular to show page? 
       else 
@@ -30,9 +32,12 @@ class DcdsController < ApplicationController
   end 
 
   def edit
+    redirect_if_not_dcd_user
+    
   end 
 
   def update
+    
     if @dcd.update(dcd_params)
       redirect_to dcd_path(@dcd)
     else
@@ -54,7 +59,11 @@ class DcdsController < ApplicationController
   end 
 
   def dcd_params #permit only the attributes we added to our object
-    params.require(:dcd).permit(:first_name, :last_name, :relationship, :gender, :birthday, :deathday, :picture)
-  end 
+    params.require(:dcd).permit(:first_name, :last_name, :relationship, :gender, :birthday, :deathday, :picture, :user_id)
+  end
+
+  def redirect_if_not_dcd_user
+    redirect_to dcd_path(@dcd) unless current_user.id == @dcd.user_id
+  end
   
 end

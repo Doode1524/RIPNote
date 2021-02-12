@@ -7,7 +7,7 @@ class Dcd < ApplicationRecord
   validates :last_name, presence: :true
 
 
-  has_many :users, through: :posts
+  belongs_to :user
   has_many :posts, :dependent => :destroy
   has_one_attached :picture
 

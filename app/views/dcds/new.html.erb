@@ -2,6 +2,7 @@
 
 <%= form_for @dcd do |f| %> 
   <div> 
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </div>

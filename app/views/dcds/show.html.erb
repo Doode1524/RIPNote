@@ -5,9 +5,10 @@
 <p>Birthday: <%= @dcd.birthday %></p>
 <p>Death Day:<%= @dcd.deathday %></p>
 
-
+<%if current_user.id == @dcd.user_id%>
 <%= link_to "Edit", edit_dcd_path(@dcd) %>
 <%= link_to "Remove", dcd_path(@dcd), method: "delete" %>
+<% end %>
   
 <h3>Share Your Memories!</h3>
 <% if @dcd.posts %> 

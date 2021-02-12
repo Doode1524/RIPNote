@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_165639) do
     t.string "first_name"
     t.string "last_name"
     t.string "relationship"
+    t.integer "user_id"
     t.string "gender"
     t.date "birthday"
     t.date "deathday"
